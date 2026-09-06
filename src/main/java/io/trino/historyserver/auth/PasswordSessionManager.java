@@ -60,12 +60,6 @@ public class PasswordSessionManager
         return cookie;
     }
 
-    private BodyInserters.FormInserter<String> createLoginForm()
-    {
-        return fromFormData("username", authProps.getUsername())
-                .with("password", authProps.getPassword());
-    }
-
     private Mono<String> handleLoginResponse(ClientResponse response, String coordinatorUrl)
     {
         if (response.statusCode().is3xxRedirection() || response.statusCode().value() == 204) {
